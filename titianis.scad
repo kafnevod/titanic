@@ -26,17 +26,22 @@ include <table.scad>;
 include <floors.scad>;
 include <railingBars.scad>;
 include <level.scad>;
-
+// Баня
 sauna();
+// Ёлка
 fir();
+// Опорные стойки
 pillars();
+// Первый уровень
 translate([0, 0, pillarHeight]) level();
-translate([0, 0, 2*pillarHeight+barH]) level();
-pillarBars();
 translate([0, 0, pillarHeight+barH+railingH])
     railingBars();
+// Второй уровень    
+translate([0, 0, 2*pillarHeight+barH]) level();
 translate([0, 0, 2*pillarHeight+2*barH+railingH])
     railingBars();
+// Задние опорные брусья 
+pillarBars();
 
 
 
