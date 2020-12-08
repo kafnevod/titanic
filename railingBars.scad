@@ -10,9 +10,9 @@ module railBar() {
 // Ограда этажа
 module railingBars() {
     translate([0, -tRadius, 0]) 
-      rotate(60, 0, 0) 
+      rotate([0, 0, 60]) 
       railBar();
     translate([0, -tRadius, 0]) 
-      rotate(120, 0, 0) 
+      rotate([0, 0, 120]) 
       railBar();    
 }

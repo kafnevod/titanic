@@ -1,7 +1,10 @@
 // Стойка с площадкой
 module pillar() {
-  color("Silver") cylinder(r = pillarDiam/2 , h = pillarHeight, center = false);
-  color("Silver") translate([-10, -10, pillarHeight]) square(footSize,1,false);
+  color("Silver") 
+    cylinder(r = pillarDiam/2 , h = pillarHeight, center = false);
+  color("Silver") 
+    translate([-10, -10, pillarHeight]) 
+    square(footSize,false);
 }
 
 // задний опорный брус
