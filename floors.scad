@@ -4,7 +4,7 @@ module floorWithHole() {
   tradius =  tRadius - floorGap; 
   translate([0, 0, barH])
     linear_extrude(floorW)
-    color("LightYellow4") polygon(points=[
+    color("LightYellow") polygon(points=[
       [0, tradius/2],
       [-tSide/4 , -tradius/4],    
       [ tSide/4, -tradius/4],
