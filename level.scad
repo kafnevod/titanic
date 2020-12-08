@@ -21,7 +21,7 @@
 // include <table.scad>;
 // include <floors.scad>;
 // Уровень этажа
-module level() {
+module level(folded) {
     bars(1);
     rotate([0, 0, 180]) bars(2);
     bars(4);
@@ -33,7 +33,7 @@ module level() {
       rotate([0, 0, 60]) floor();    
     translate([tSide/4, tRadius/4, 0]) 
       rotate([0, 0, 300]) floor();
-    table();
+    table(folded);
 }
 
 // level();

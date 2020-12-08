@@ -2,9 +2,6 @@
 // tRadius = (tSide /2) / cos(30);
 
 // Секция стола
-gapSize = 0.2;
-
-// Секция стола
 module tableSubSegment() {
   l = tSide / 8;
   polygon(points=[
@@ -28,25 +25,33 @@ module tableInvertSegment() {
        color("White") linear_extrude(1) rotate([0, 0, 60]) tableSubSegment();
 }
 
-module tableSegment() {
+module tableSegment(folded) {
     l = tSide / 8;
-    r = tRadius / 8;  
-    translate([0, -(r*sin(30)+l*cos(30)) , 0]) 
-      tableInvertSegment();
+    r = tRadius / 8; 
+    if (folded) {
+    translate([0, -r*sin(30) , 0]) 
+    translate([0, 0, -l*cos(30)]) 
+      rotate([90, 0, 0])  
+//          translate([0, -(r*sin(30)+l*cos(30)) , 0]) 
+        tableInvertSegment();
+    } else { 
+      translate([0, -(r*sin(30)+l*cos(30)) , 0]) 
+        tableInvertSegment();
+    }
 }
 
 // Стол
-module table() {
-       translate([0, 0, hTable])     
-        tableSegment();
-    rotate([0, 0, 120])  
-       translate([0, 0, hTable]) 
-        tableSegment();
-    rotate([0, 0, 240])  
-       translate([0, 0, hTable]) 
-        tableSegment();
+module table(folded) {
+  translate([0, 0, hTable])     
+    tableSegment(folded);
+  rotate([0, 0, 120])  
+    translate([0, 0, hTable]) 
+    tableSegment(folded);
+  rotate([0, 0, 240])  
+    translate([0, 0, hTable]) 
+    tableSegment(folded);
 }
 //tableSubSegment();
-//tableInvertSegment();
+// tableInvertSegment();
 //tableSegment();
 //table();

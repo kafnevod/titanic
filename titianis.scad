@@ -33,11 +33,11 @@ fir();
 // Опорные стойки
 pillars();
 // Первый уровень
-translate([0, 0, pillarHeight]) level();
+translate([0, 0, pillarHeight]) level(false);
 translate([0, 0, pillarHeight+barH+railingH])
     railingBars();
 // Второй уровень    
-translate([0, 0, 2*pillarHeight+barH]) level();
+translate([0, 0, 2*pillarHeight+barH]) level(true);
 translate([0, 0, 2*pillarHeight+2*barH+railingH])
     railingBars();
 // Задние опорные брусья 
