@@ -22,7 +22,7 @@ include <sauna.scad>;
 include <fir.scad>;
 include <pillars.scad>;
 include <bars.scad>;
-include <table.scad>;
+include <tables.scad>;
 include <floors.scad>;
 include <railingBars.scad>;
 include <level.scad>;
