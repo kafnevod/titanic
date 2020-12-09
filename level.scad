@@ -18,7 +18,7 @@
 // 
 // railingH = 100;
 // include <bars.scad>;
-// include <table.scad>;
+// include <tables.scad>;
 // include <floors.scad>;
 // Уровень этажа
 module level(folded) {
@@ -33,7 +33,12 @@ module level(folded) {
       rotate([0, 0, 60]) floor();    
     translate([tSide/4, tRadius/4, 0]) 
       rotate([0, 0, 300]) floor();
-    table(folded);
+    translate([0, 0, hTable])     
+      table(folded);
+    translate([0, -tRadius, hTable])     
+      rightTable(folded);
+    translate([0, -tRadius, hTable])     
+      leftTable(folded);
 }
 
-// level();
+// level(false);
