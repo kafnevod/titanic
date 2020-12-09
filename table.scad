@@ -11,19 +11,23 @@ module tableSubSegment() {
   ]);
 }
 
-module tableInvertSegment() {
+module tableInvertSegment(folded) {
   color("White") 
      linear_extrude(1) 
       tableSubSegment();
-   translate([gapSize*sin(30), -gapSize*cos(30), 0]) color("White") linear_extrude(1) rotate([0, 180, -60]) tableSubSegment();
-
+   if (!folded) {   
+     translate([gapSize*sin(30), -gapSize*cos(30), 0]) color("White") linear_extrude(1) rotate([0, 180, -60]) tableSubSegment();
+   }	
   color("White") 
      linear_extrude(1) 
       rotate([0, 180, 0]) 
       tableSubSegment();
-   translate([-gapSize*sin(30), -gapSize*cos(30), 0])
+   if (!folded) {   
+      translate([-gapSize*sin(30), -gapSize*cos(30), 0])
        color("White") linear_extrude(1) rotate([0, 0, 60]) tableSubSegment();
+   }
 }
+
 
 module tableSegment(folded) {
     l = tSide / 8;
@@ -33,10 +37,10 @@ module tableSegment(folded) {
     translate([0, 0, -l*cos(30)]) 
       rotate([90, 0, 0])  
 //          translate([0, -(r*sin(30)+l*cos(30)) , 0]) 
-        tableInvertSegment();
+        tableInvertSegment(folded);
     } else { 
       translate([0, -(r*sin(30)+l*cos(30)) , 0]) 
-        tableInvertSegment();
+        tableInvertSegment(folded);
     }
 }
 
