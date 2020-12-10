@@ -9,4 +9,4 @@ module cornerBar(length, width) {
     square([length, width]);    
 }
 
-cornerBar(300, 5);
+// cornerBar(300, 5);

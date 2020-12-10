@@ -9,7 +9,7 @@ pillarHeight = 200;
 footSize = 20;
 
 barW = 5;
-barH = 20;  
+barH = 15;  
 
 floorW = 3;
 floorGap = 2;
@@ -26,6 +26,8 @@ include <tables.scad>;
 include <floors.scad>;
 include <railingBars.scad>;
 include <level.scad>;
+include <cornerBar.scad>;
+include <ladder.scad>;
 // Баня
 sauna();
 // Ёлка
@@ -37,11 +39,13 @@ translate([0, 0, pillarHeight]) level(false);
 translate([0, 0, pillarHeight+barH+railingH])
     railingBars();
 // Второй уровень    
-translate([0, 0, 2*pillarHeight+barH]) level(true);
+translate([0, 0, 2*pillarHeight+barH]) level(false);
 translate([0, 0, 2*pillarHeight+2*barH+railingH])
     railingBars();
 // Задние опорные брусья 
 pillarBars();
+//Лестница
+ladder();
 
 
 
