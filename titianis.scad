@@ -29,7 +29,7 @@ include <level.scad>;
 include <cornerBar.scad>;
 include <ladder.scad>;
 // Баня
-sauna();
+//sauna();
 // Ёлка
 fir();
 // Опорные стойки
