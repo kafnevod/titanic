@@ -8,8 +8,11 @@
 // 
 // include <cornerBar.scad>;
 
-ladderW = 50; // Ширина лестницы
+ladderW = 80; // Ширина лестницы
+bigCornerW = 5;
+
 level2H = pillarHeight*2 + barH;
+level1H = pillarHeight + barH;
 // Опорные уголки
 
 module ladder() {
@@ -18,12 +21,12 @@ module ladder() {
 //Дальный выносной поддерживающий уголок второго этажа
   translate([-tRadius*sin(30)*cos(30), -tRadius*sin(30)*sin(30), level2H])
     rotate([90, 0, 120])
-    cornerBar(tSide/2 + ladderW/cos(30), 5);
+    cornerBar(tSide/2 + ladderW/cos(30), bigCornerW);
   
 //Правый уголок верхней площадки
   translate([-(tSide/2+ladderW*sin(30)), tRadius*sin(30)+ladderW, level2H])
     rotate([90, 0, 0])
-    cornerBar(ladderW*sin(30), 5);   
+    cornerBar(ladderW*sin(30), bigCornerW);   
     
 // Ближний выносной поддерживающий уголок второго этажа
   barLen = ladderW;
@@ -32,42 +35,42 @@ module ladder() {
              level2H
             ])
     rotate([0, 0, 90])
-    cornerBar(barLen, 5);  
+    cornerBar(barLen, bigCornerW);  
 
+ // Выносной поддерживающий уголок первого этажа
+   translate([bigCornerW/2, tRadius/8-barW/2, pillarHeight])
+     rotate([180, 0, 90])
+    cornerBar((tSide/4)*cos(30)  + ladderW, bigCornerW);    
+    
   //Спуск со 2-го этажа
   // Левый  
   translate([(tSide/2) , tRadius*sin(30)+barW/2, 0])
     rotate([-90, -(180-angle), 0])
-    cornerBar((pillarHeight*2+barH)/sin(angle), 5);  
+    cornerBar((pillarHeight*2+barH)/sin(angle), bigCornerW);  
   // Правый   
-  deltaHyp = (pillarHeight*2+barH)/sin(angle) + (ladderW*sin(30))/(cos(30)*cos(angle));
-  translate([(tSide/2) , tRadius*sin(30)++ladderW+barW/2, 0])
-    rotate([-90, -(180-angle), 0])
-    cornerBar(deltaHyp, 5);  
-  deltaH =  deltaHyp * sin(angle);   
+  rightRailingsLen = (pillarHeight*2+barH)/sin(angle) + (ladderW*sin(30))/(cos(30)*cos(angle));
+  translate([(tSide/2) , tRadius*sin(30)++ladderW-barW/2, 0])
+    rotate([180, -(180-angle), 0])
+    cornerBar(rightRailingsLen, bigCornerW);  
+  // Правые перила   
+  translate([(tSide/2) , tRadius*sin(30)+ladderW-barW/2, railingH])
+    rotate([180, -(180-angle), 0])
+    cornerBar(rightRailingsLen, bigCornerW); 
+
     
-//   translate([platform1X , tRadius*sin(30)+ladderW, platform1Z])
-//     rotate([-180, -135, 0])
-//     cornerBar((pillarHeight+floorW+barH)/sin(45), 5); 
-    
-//   //Левый уголок нижней площадки
-//   translate([platform1X, tRadius*sin(30)+barW/2+1, platform1Z])
-//     rotate([0, 0, 0])
-//     cornerBar(ladderEntryW, 5);   
-//     
-//   //Правый уголок нижней площадки
-//   translate([platform1X, tRadius*sin(30)+ladderW+1, platform1Z])
-//     rotate([90, 0, 0])
-//     cornerBar(ladderEntryW, 5);  
-// 
-//   //Спуск со 1-го этажа
-//   platform0X = platform1X+pillarHeight+ladderEntryW;
-//   translate([platform0X , tRadius*sin(30)+barW/2, 0])
-//     rotate([-90, -135, 0])
-//     cornerBar((pillarHeight)/sin(45), 5);   
-//   translate([platform0X , tRadius*sin(30)+ladderW, 0])
-//     rotate([-180, -135, 0])
-//     cornerBar((pillarHeight)/sin(45), 5); 
+  // Подпорки правых перил
+  // Нижняя  
+  translate([(tSide/2) , tRadius*sin(30)+ladderW-barW/2, 0])
+    rotate([180, -90, 0])
+    cornerBar(railingH, bigCornerW); 
+  // Средняя      
+  translate([0 , tRadius*sin(30)+ladderW-barW/2, pillarHeight+barW/2+bigCornerW/2])
+    rotate([180, -90, 0])
+    cornerBar(railingH, bigCornerW);
+  // Верхняя
+  translate([tSide/2 - rightRailingsLen*cos(angle) , tRadius*sin(30)+ladderW-barW/2, rightRailingsLen*sin(angle)])
+    rotate([180, -90, 0])
+    cornerBar(railingH, bigCornerW);
     
 }
 
