@@ -28,6 +28,7 @@ include <railingBars.scad>;
 include <level.scad>;
 include <cornerBar.scad>;
 include <ladder.scad>;
+include <stair.scad>;
 // Баня
 //sauna();
 // Ёлка

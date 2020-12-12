@@ -72,6 +72,20 @@ module ladder() {
     rotate([180, -90, 0])
     cornerBar(railingH, bigCornerW);
     
+  // Ступеньки
+  H = pillarHeight*2 + barH;
+  W = tSide;
+  nStairs = 18;
+  for (n = [1:nStairs]) {
+    echo ("n=", n);
+    x = tSide/2 - (W/nStairs) * n + bigCornerW;
+    y = tRadius * sin(30) + bigCornerW/2;
+    z = (H/nStairs) * n + bigCornerW;
+    echo ("x=",x, " y=",y, " z=", z);
+    translate([x, y , z])
+      stair();
+  }
+    
 }
 
 // ladder();
