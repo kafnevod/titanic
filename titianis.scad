@@ -47,6 +47,8 @@ translate([0, 0, 2*pillarHeight+2*barH+railingH])
 pillarBars();
 //Лестница
 ladder();
+translate([0,0,pillarHeight+barH])
+    ladder();
 
 
 
