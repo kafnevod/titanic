@@ -49,6 +49,7 @@ pillarBars();
 ladder();
 translate([0,0,pillarHeight+barH])
     ladder();
+platform1();    
 
 
 
