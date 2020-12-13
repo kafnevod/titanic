@@ -49,7 +49,15 @@ pillarBars();
 ladder();
 translate([0,0,pillarHeight+barH])
   ladder();
-
+platform1();
+translate([
+    (tSide/2) - platformL - (pillarHeight + barH) - stairW - smallCornerW,
+    tRadius * sin(30) + bigCornerW/2,
+    pillarHeight + barH - 1
+    ]
+  )
+  platform2();
+platform3();
 
 
 
