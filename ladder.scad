@@ -32,7 +32,7 @@ module platform2() {
     rotate([-90, 0, 90])
     cornerBar(ladderW-bigCornerW, smallCornerW);
   // Левый уголок    
-  translate([-(platformL), bigCornerW, 1])
+  translate([-(platformL), 0, 1])
     rotate([0, 0, 0])
     cornerBar(platformL, smallCornerW); 
 
@@ -45,9 +45,9 @@ module platform2() {
     rotate([0, 0, 90])
     cornerBar(ladderW-(bigCornerW+smallCornerW)*2-bigCornerW+barW, smallCornerW);    
 
-  translate([-platformL, bigCornerW+smallCornerW, 1])
+  translate([-platformL, 0, 1])
     rotate([90, 0, 90])
-    cornerBar(ladderW-(bigCornerW+smallCornerW)*2-bigCornerW+barW, smallCornerW);   
+    cornerBar(ladderW-(bigCornerW)-bigCornerW+barW, smallCornerW);   
 }
 
 module platform3() {
