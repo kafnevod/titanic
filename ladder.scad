@@ -12,16 +12,27 @@ ladderW = 80; // Ширина лестницы
 bigCornerW = 5;
 platformL = 50;
 
-level2H = pillarHeight*2 + barH;
+level2H = (pillarHeight + barH) * 2;
 level1H = pillarHeight + barH;
 // Опорные уголки
 
 
 module platform1() {
   // Выносной поддерживающий уголок первого этажа
-  translate([tRadius*sin(30)*cos(30) + barW*cos(30)+1, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level1H])
+  translate([tRadius*sin(30)*cos(30) + barW*cos(30)+2, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level1H])
     rotate([180, 0, 60])
     cornerBar(tSide/2 + ladderW/cos(30), bigCornerW);
+}
+
+module platform2() {
+}
+
+module platform3() {
+//Дальный выносной поддерживающий уголок второго этажа
+/*  translate([-(tRadius)*sin(30)*cos(30)+ barW*cos(30)+1, -tRadius*sin(30)*sin(30)+1, level2H]) */
+  translate([-tRadius*sin(30)*cos(30) - barW*cos(30) - 1, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level2H])
+    rotate([-90, 0, 120])
+    cornerBar(tSide/2 + ladderW/cos(30), 5); 
 }
 
 
@@ -32,14 +43,30 @@ module ladder() {
   //Спуск с этажа
   // Левый  
   translate([(tSide/2)-platformL-barH , tRadius*sin(30)+barW/2, -barH])
-    rotate([-90, -(180-angle), 0])
+    rotate([0, -(180-angle), 0])
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
+    
+  // Ступеньки
+  H = pillarHeight + barH;
+  W = H;
+  nStairs = 9;
+  for (n = [1:nStairs-0]) {
+    x = (tSide/2) - platformL - (W/nStairs) * n - stairW - smallCornerW;
+    y = tRadius * sin(30) + bigCornerW/2;
+    z = (H/nStairs) * n -1;
+    translate([x, y , z])
+      stair();
+  }    
+  echo ("x=",x, " y=",y, " z=", z);
     
   // Правый   
 //   rightRailingsLen = (pillarHeight*2+barH)/sin(angle) + (ladderW*sin(30))/(cos(30)*cos(angle));
   translate([(tSide/2)-platformL-barH , tRadius*sin(30)+ladderW-barW/2, -barH])
-    rotate([180, -(180-angle), 0])
+    rotate([90, -(180-angle), 0])
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
+      
+    
+    
 //   // Правые перила   
 //   translate([(tSide/2) , tRadius*sin(30)+ladderW-barW/2, railingH])
 //     rotate([180, -(180-angle), 0])
@@ -81,18 +108,7 @@ module ladder() {
 //     rotate([180, -90, 0])
 //     cornerBar(railingH, bigCornerW);
 //     
-//   // Ступеньки
-  H = pillarHeight + barH;
-  W = H;
-  nStairs = 9;
-  for (n = [1:nStairs]) {
-    x = (tSide/2) - platformL - (W/nStairs) * n - stairW + smallCornerW;
-    y = tRadius * sin(30) + bigCornerW/2;
-    z = (H/nStairs) * n -1;
-    echo ("x=",x, " y=",y, " z=", z);
-    translate([x, y , z])
-      stair();
-  }
+
     
 }
 

@@ -48,8 +48,7 @@ pillarBars();
 //Лестница
 ladder();
 translate([0,0,pillarHeight+barH])
-    ladder();
-platform1();    
+  ladder();
 
 
 
