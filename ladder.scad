@@ -12,7 +12,7 @@
 
 ladderW = 80; // Ширина лестницы
 bigCornerW = 5;
-platformL = 50;
+platformL = 60;
 
 level2H = (pillarHeight + barH) * 2;
 level1H = pillarHeight + barH;
@@ -20,10 +20,27 @@ level1H = pillarHeight + barH;
 
 
 module platform1() {
-  // Выносной поддерживающий уголок первого этажа
-  translate([tRadius*sin(30)*cos(30) + barW*cos(30)+2, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level1H])
-    rotate([180, 0, 60])
-    cornerBar(tSide/2 + ladderW/cos(30), bigCornerW);
+  // Ближний нижний уголок  
+  translate([0, 0, 0])
+    rotate([-90, 0, 90])
+    cornerBar(ladderW-bigCornerW, smallCornerW);
+  // Левый уголок    
+  translate([-(platformL), 0, 1])
+    rotate([0, 0, 0])
+    cornerBar(platformL, smallCornerW); 
+
+  // Правый уголок    
+  translate([-(platformL), ladderW-bigCornerW-bigCornerW+bigCornerW, 2])
+    rotate([90, 0, 0])
+    cornerBar(platformL, smallCornerW); 
+
+  translate([-1, bigCornerW+smallCornerW, 1])
+    rotate([0, 0, 90])
+    cornerBar(ladderW-(bigCornerW+smallCornerW)*2-bigCornerW+barW, smallCornerW);    
+
+  translate([-platformL, 0, 1])
+    rotate([90, 0, 90])
+    cornerBar(ladderW-(bigCornerW)-bigCornerW+barW, smallCornerW);   
 }
 
 module platform2() {
@@ -51,13 +68,6 @@ module platform2() {
 }
 
 
-module support() {
-//Дальный выносной поддерживающий уголок второго этажа
-/*  translate([-(tRadius)*sin(30)*cos(30)+ barW*cos(30)+1, -tRadius*sin(30)*sin(30)+1, level2H]) */
-  translate([-tRadius*sin(30)*cos(30) - barW*cos(30) - 1, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level2H])
-    rotate([-90, 0, 120])
-    cornerBar(tSide/2 + ladderW/cos(30), 5); 
-}
 
 module platform3() {
     
@@ -79,10 +89,20 @@ module platform3() {
   translate([-1, bigCornerW+smallCornerW, 1])
     rotate([0, 0, 90])
     cornerBar(ladderW-(bigCornerW+smallCornerW)*2-bigCornerW+barW, smallCornerW);    
-
-  
 }
 
+
+module support() {
+  // Выносной поддерживающий уголок первого этажа
+  translate([tRadius*sin(30)*cos(30) + barW*cos(30)+2, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level1H])
+    rotate([180, 0, 60])
+    cornerBar(tSide/2 + ladderW/cos(30), bigCornerW);  
+//Дальный выносной поддерживающий уголок второго этажа
+/*  translate([-(tRadius)*sin(30)*cos(30)+ barW*cos(30)+1, -tRadius*sin(30)*sin(30)+1, level2H]) */
+  translate([-tRadius*sin(30)*cos(30) - barW*cos(30) - 1, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level2H])
+    rotate([-90, 0, 120])
+    cornerBar(tSide/2 + ladderW/cos(30), 5); 
+}
 
 module ladder() {
 //   angle = atan((pillarHeight*2 + barH)/tSide);
@@ -90,7 +110,7 @@ module ladder() {
 //   echo ("angle=", angle);
   //Спуск с этажа
   // Левый  
-  translate([(tSide/2)-platformL-barH , tRadius*sin(30)+barW/2, -barH])
+  translate([(tSide/2)-platformL+barH , tRadius*sin(30)+barW/2, -barH])
     rotate([0, -(180-angle), 0])
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
     
@@ -99,7 +119,7 @@ module ladder() {
   W = H;
   nStairs = 9;
   for (n = [1:nStairs-1]) {
-    x = (tSide/2) - platformL - (W/nStairs) * n - stairW - smallCornerW;
+    x = (tSide/2) - platformL - (W/nStairs) * n + 2 + smallCornerW;
     y = tRadius * sin(30) + bigCornerW/2;
     z = (H/nStairs) * n -1;
     translate([x, y , z])
@@ -108,7 +128,7 @@ module ladder() {
     
   // Правый   
 //   rightRailingsLen = (pillarHeight*2+barH)/sin(angle) + (ladderW*sin(30))/(cos(30)*cos(angle));
-  translate([(tSide/2)-platformL-barH , tRadius*sin(30)+ladderW-barW/2, -barH])
+  translate([(tSide/2)-platformL+barH , tRadius*sin(30)+ladderW-barW/2, -barH])
     rotate([90, -(180-angle), 0])
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
       
