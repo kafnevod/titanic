@@ -50,12 +50,37 @@ module platform2() {
     cornerBar(ladderW-(bigCornerW)-bigCornerW+barW, smallCornerW);   
 }
 
-module platform3() {
+
+module support() {
 //Дальный выносной поддерживающий уголок второго этажа
 /*  translate([-(tRadius)*sin(30)*cos(30)+ barW*cos(30)+1, -tRadius*sin(30)*sin(30)+1, level2H]) */
   translate([-tRadius*sin(30)*cos(30) - barW*cos(30) - 1, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level2H])
     rotate([-90, 0, 120])
     cornerBar(tSide/2 + ladderW/cos(30), 5); 
+}
+
+module platform3() {
+    
+  // Ближний нижний уголок  
+  translate([0, 0, 0])
+    rotate([-90, 0, 90])
+    cornerBar(ladderW-bigCornerW, smallCornerW);
+    
+  // Левый уголок    
+  translate([-(tSide/2 - platformL), 0, 2])
+    rotate([0, 0, 0])
+    cornerBar(tSide/2 - platformL, smallCornerW); 
+
+  // Правый уголок    
+  translate([-(tSide/2 - platformL)  - (ladderW/cos(30)) * sin(30), ladderW-bigCornerW-bigCornerW+bigCornerW, 2])
+    rotate([90, 0, 0])
+    cornerBar(tSide/2 - platformL + (ladderW/cos(30)) * sin(30), bigCornerW); 
+
+  translate([-1, bigCornerW+smallCornerW, 1])
+    rotate([0, 0, 90])
+    cornerBar(ladderW-(bigCornerW+smallCornerW)*2-bigCornerW+barW, smallCornerW);    
+
+  
 }
 
 
