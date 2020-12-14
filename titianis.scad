@@ -50,29 +50,9 @@ ladder();
 translate([0,0,pillarHeight+barH])
   ladder();
   
-translate([
-    (tSide/2),
-    tRadius * sin(30) + bigCornerW/2,
-    pillarHeight + barH - 1
-    ]
-  )  
-  platform1();
-  
-translate([
-    (tSide/2) - platformL - (pillarHeight + barH)  + 2*smallCornerW ,
-    tRadius * sin(30) + bigCornerW/2,
-    pillarHeight + barH - 1
-    ]
-  )
-  platform2();
-
-translate([
-    (tSide/2) - platformL - (pillarHeight + barH) + 2*smallCornerW,
-    tRadius * sin(30) + bigCornerW/2,
-    2*(pillarHeight+barH) - 1
-    ]
-  )  
-    platform3();
+platform1();
+platform2();
+platform3();
 
 support();
 

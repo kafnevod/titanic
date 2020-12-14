@@ -18,8 +18,16 @@ level2H = (pillarHeight + barH) * 2;
 level1H = pillarHeight + barH;
 // Опорные уголки
 
+module platform1() {translate([
+    (tSide/2),
+    tRadius * sin(30) + bigCornerW/2,
+    pillarHeight + barH - 1
+    ]
+  )  
+  _platform1();
+}
 
-module platform1() {
+module _platform1() {
   // Ближний нижний уголок  
   translate([0, 0, 0])
     rotate([-90, 0, 90])
@@ -44,6 +52,16 @@ module platform1() {
 }
 
 module platform2() {
+  translate([
+    (tSide/2) - platformL - (pillarHeight + barH)  + 2*smallCornerW ,
+    tRadius * sin(30) + bigCornerW/2,
+    pillarHeight + barH - 1
+    ]
+  )  
+  _platform2();
+}
+
+module _platform2() {
   // Ближний нижний уголок  
   translate([0, 0, 0])
     rotate([-90, 0, 90])
@@ -70,6 +88,16 @@ module platform2() {
 
 
 module platform3() {
+  translate([
+    (tSide/2) - platformL - (pillarHeight + barH) + 2*smallCornerW,
+    tRadius * sin(30) + bigCornerW/2,
+    2*(pillarHeight+barH) - 1
+    ]
+  ) 
+    _platform3();
+}
+
+module _platform3() {
     
   // Ближний нижний уголок  
   translate([0, 0, 0])
