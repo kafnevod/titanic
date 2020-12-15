@@ -16,6 +16,9 @@ platformL = 60;
 
 level2H = (pillarHeight + barH) * 2;
 level1H = pillarHeight + barH;
+
+delta3Ladder = (ladderW/cos(30))*sin(30);
+
 // Опорные уголки
 
 module platform1() {translate([
@@ -28,23 +31,19 @@ module platform1() {translate([
 }
 
 module _platform1() {
-  // Ближний нижний уголок  
-  translate([0, 0, 0])
+  // Дальний нижний уголок  
+  translate([-platformL + bigCornerW, 0, 0])
     rotate([-90, 0, 90])
     cornerBar(ladderW-bigCornerW, smallCornerW);
   // Левый уголок    
   translate([-(platformL), 0, 1])
     rotate([0, 0, 0])
-    cornerBar(platformL, smallCornerW); 
+    cornerBar(platformL+barW+bigCornerW, smallCornerW); 
 
   // Правый уголок    
   translate([-(platformL), ladderW-bigCornerW-bigCornerW+bigCornerW, 2])
     rotate([90, 0, 0])
-    cornerBar(platformL, smallCornerW); 
-
-  translate([-1, bigCornerW+smallCornerW, 1])
-    rotate([0, 0, 90])
-    cornerBar(ladderW-(bigCornerW+smallCornerW)*2-bigCornerW+barW, smallCornerW);    
+    cornerBar(platformL+barW+delta3Ladder, smallCornerW);    
 
   translate([-platformL, 0, 1])
     rotate([90, 0, 90])
@@ -90,7 +89,6 @@ module _platform2() {
 
 ladder3X = (platformL + pillarHeight + barH) - tSide/2;
 ladder3L = tSide/2 -ladder3X + barH;
-delta3Ladder = (ladderW/cos(30))*sin(30);
 
 module platform3() {
   translate([
