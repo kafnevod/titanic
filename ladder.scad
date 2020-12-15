@@ -62,10 +62,12 @@ module platform2() {
 }
 
 module _platform2() {
+  
   // Ближний нижний уголок  
   translate([0, 0, 0])
     rotate([-90, 0, 90])
     cornerBar(ladderW-bigCornerW, smallCornerW);
+    
   // Левый уголок    
   translate([-(platformL), 0, 1])
     rotate([0, 0, 0])
@@ -86,6 +88,9 @@ module _platform2() {
 }
 
 
+ladder3X = (platformL + pillarHeight + barH) - tSide/2;
+ladder3L = tSide/2 -ladder3X + barH;
+delta3Ladder = (ladderW/cos(30))*sin(30);
 
 module platform3() {
   translate([
@@ -94,7 +99,7 @@ module platform3() {
     2*(pillarHeight+barH) - 1
     ]
   ) 
-    _platform3();
+  _platform3();
 }
 
 module _platform3() {
@@ -105,14 +110,17 @@ module _platform3() {
     cornerBar(ladderW-bigCornerW, smallCornerW);
     
   // Левый уголок    
-  translate([-(tSide/2 - platformL), 0, 2])
+  translate([-ladder3L, 0, 2])
     rotate([0, 0, 0])
-    cornerBar(tSide/2 - platformL, smallCornerW); 
+    cornerBar(ladder3L, smallCornerW); 
 
-  // Правый уголок    
-  translate([-(tSide/2 - platformL)  - (ladderW/cos(30)) * sin(30), ladderW-bigCornerW-bigCornerW+bigCornerW, 2])
-    rotate([90, 0, 0])
-    cornerBar(tSide/2 - platformL + (ladderW/cos(30)) * sin(30), bigCornerW); 
+  // Правый уголок   
+   translate([-ladder3L-delta3Ladder, ladderW-bigCornerW-bigCornerW+bigCornerW, 2])
+    rotate([0, 0, 0])
+    cornerBar(ladder3L + delta3Ladder, smallCornerW);    
+//   translate([-(tSide/2 - platformL)  - (ladderW/cos(30)) * sin(30), ladderW-bigCornerW-bigCornerW+bigCornerW, 2])
+//     rotate([90, 0, 0])
+//     cornerBar(tSide/2 - platformL + (ladderW/cos(30)) * sin(30), bigCornerW); 
 
   translate([-1, bigCornerW+smallCornerW, 1])
     rotate([0, 0, 90])
