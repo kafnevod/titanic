@@ -147,6 +147,11 @@ module ladder() {
   translate([(tSide/2)-platformL+barH , tRadius*sin(30)+barW/2, -barH])
     rotate([0, -(180-angle), 0])
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
+
+  // Левый задний  
+  translate([(tSide/2)-platformL+barH-stairW+bigCornerW, tRadius*sin(30)+barW/2, -barH])
+    rotate([0, -(180-angle), 0])
+    cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);
     
   // Ступеньки
   H = pillarHeight + barH;
@@ -161,12 +166,14 @@ module ladder() {
   }    
     
   // Правый   
-//   rightRailingsLen = (pillarHeight*2+barH)/sin(angle) + (ladderW*sin(30))/(cos(30)*cos(angle));
   translate([(tSide/2)-platformL+barH , tRadius*sin(30)+ladderW-barW/2, -barH])
     rotate([90, -(180-angle), 0])
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
       
-    
+  // Правый задний  
+  translate([(tSide/2)-platformL+barH-stairW+bigCornerW , tRadius*sin(30)+ladderW-barW/2, -barH])
+    rotate([90, -(180-angle), 0])
+    cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);     
     
 //   // Правые перила   
 //   translate([(tSide/2) , tRadius*sin(30)+ladderW-barW/2, railingH])
