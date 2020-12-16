@@ -84,7 +84,7 @@ module platform2() {
     [RDx - (platformL-2), RDy + ladderW - bigCornerW -2],
     [RDx - (platformL-2), RDy]
   ];
-  echo ("POINTS=", points);    
+//   echo ("POINTS=", points);    
   translate([0, 0, pillarHeight + barH +1])
   linear_extrude(floorW)
     color("LightYellow") 
@@ -92,7 +92,6 @@ module platform2() {
     paths = [[0,1,2,3]],
     convexity = 10
   );   
-  
 }
 
 module _platform2() {
@@ -133,6 +132,23 @@ module platform3() {
     ]
   ) 
   _platform3();
+  //Floor 
+  RDx = (tSide/2) - platformL - (pillarHeight + barH)  + 2*smallCornerW  - 1;
+  RDy = tRadius * sin(30) + bigCornerW/2 +1;
+  points = [
+    [RDx, RDy],
+    [RDx, RDy + ladderW - bigCornerW -2],
+    [RDx - (ladder3L+bigCornerW-8)-(ladderW/cos(30))*sin(30), RDy + ladderW - bigCornerW -2],
+    [RDx - (ladder3L+bigCornerW-4), RDy]
+  ];
+  echo ("POINTS=", points);    
+  translate([0, 0, 2*(pillarHeight+barH) + 1])
+  linear_extrude(floorW)
+    color("LightYellow") 
+    polygon(points=points,
+    paths = [[0,1,2,3]],
+    convexity = 10
+  );     
 }
 
 module _platform3() {
