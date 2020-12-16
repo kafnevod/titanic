@@ -2,7 +2,6 @@ include <cornerBar.scad>;
 ladderW = 80; // Ширина лестницы
 smallCornerW = 3;
 stairW = 24;
-floorW = 3;
 bigCornerW = 5;
 
 module stair() {

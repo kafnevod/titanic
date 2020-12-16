@@ -36,7 +36,7 @@ fir();
 // Опорные стойки
 pillars();
 // Первый уровень
-translate([0, 0, pillarHeight]) level(false);
+translate([0, 0, pillarHeight]) level(true);
 translate([0, 0, pillarHeight+barH+railingH])
     railingBars();
 // Второй уровень    
