@@ -187,6 +187,33 @@ module support() {
   translate([-tRadius*sin(30)*cos(30) - barW*cos(30) - 1, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level2H])
     rotate([-90, 0, 120])
     cornerBar(tSide/2 + ladderW/cos(30), 5); 
+    
+  // Дальняя передняя стойка
+  translate([(tSide/2)-platformL, tRadius*sin(30)+ladderW-barW/2, 0])
+    rotate([0, -90, 0])
+    cornerBar(pillarHeight+barH+railingH, 5);  
+
+  // Ближняя передняя стойка
+  translate([(tSide/2)-platformL, tRadius*sin(30)+barW/2, 0])
+    rotate([0, -90, 0])
+    cornerBar(pillarHeight+barH+railingH, 5); 
+
+  RDx = (tSide/2) - platformL - (pillarHeight + barH)  + 2*smallCornerW;
+  // Дальняя задняя стойка
+  translate([RDx, tRadius*sin(30)+ladderW-barW/2+1, pillarHeight + barH])
+    rotate([0, -90, 0])
+    cornerBar(pillarHeight+barH+railingH, 5); 
+    
+  // Дальняя задняя стойка II
+  translate([RDx - platformL, tRadius*sin(30)+ladderW-barW/2+1, pillarHeight + barH])
+    rotate([0, -90, 0])
+    cornerBar(pillarHeight+barH+railingH, 5);     
+
+  // Дальняя передняя стойка
+  translate([RDx, tRadius*sin(30)+barW/2, pillarHeight + barH])
+    rotate([0, -90, 0])
+    cornerBar(pillarHeight+barH+railingH, 5);     
+    
 }
 
 module ladder() {
@@ -227,14 +254,14 @@ module ladder() {
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);     
     
   // Левые перила
-  translate([(tSide/2)-platformL+barH , tRadius*sin(30)+barW/2, -barH + railingH])
+  translate([(tSide/2)-platformL , tRadius*sin(30)+barW/2, railingH])
     rotate([0, -(180-angle), 0])
-    cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);     
+    cornerBar((pillarHeight+barH)/sin(angle), bigCornerW);     
     
   // Правые перила   
-  translate([(tSide/2)-platformL+barH , tRadius*sin(30)+ladderW-barW/2, -barH + railingH])
+  translate([(tSide/2)-platformL , tRadius*sin(30)+ladderW+barW/2,   railingH])
     rotate([90, -(180-angle), 0])
-    cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);
+    cornerBar((pillarHeight+barH)/sin(angle), bigCornerW);
    
 }
 
