@@ -40,7 +40,7 @@ module stair() {
       [(-stairW+1),smallCornerW+2] 
     ];
 // echo (points);    
-  translate([0, 0, 1])
+  translate([0, 0, 2])
   linear_extrude(floorW)
     color("LightYellow") polygon(points=points,
     paths = [[0,1,2,3]],
