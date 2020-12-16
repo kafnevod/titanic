@@ -28,6 +28,23 @@ module platform1() {translate([
     ]
   )  
   _platform1();
+  //Floor 
+  RDx = tSide/2 + barW + bigCornerW;
+  RDy = tRadius * sin(30) + bigCornerW/2;
+  points = [
+    [RDx, RDy],
+    [RDx + (ladderW/cos(30))*sin(30), RDy + ladderW - bigCornerW],
+    [RDx - (platformL+ barW + bigCornerW), RDy + ladderW - bigCornerW],
+    [RDx - (platformL+ barW + bigCornerW), RDy]
+  ];
+  echo ("POINTS=", points);    
+  translate([0, 0, pillarHeight + barH +1])
+  linear_extrude(floorW)
+    color("LightYellow") 
+    polygon(points=points,
+    paths = [[0,1,2,3]],
+    convexity = 10
+  ); 
 }
 
 module _platform1() {
