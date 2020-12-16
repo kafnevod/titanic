@@ -149,7 +149,7 @@ module ladder() {
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
 
   // Левый задний  
-  translate([(tSide/2)-platformL+barH-stairW+bigCornerW, tRadius*sin(30)+barW/2, -barH])
+  translate([(tSide/2)-platformL+barH-stairW+bigCornerW-2, tRadius*sin(30)+barW/2, -barH])
     rotate([0, -(180-angle), 0])
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);
     
@@ -171,7 +171,7 @@ module ladder() {
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
       
   // Правый задний  
-  translate([(tSide/2)-platformL+barH-stairW+bigCornerW , tRadius*sin(30)+ladderW-barW/2, -barH])
+  translate([(tSide/2)-platformL+barH-stairW+bigCornerW-2 , tRadius*sin(30)+ladderW-barW/2, -barH])
     rotate([90, -(180-angle), 0])
     cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);     
     

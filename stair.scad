@@ -1,7 +1,7 @@
 include <cornerBar.scad>;
 ladderW = 80; // Ширина лестницы
 smallCornerW = 3;
-stairW = 22;
+stairW = 24;
 
 bigCornerW = 5;
 
