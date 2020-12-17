@@ -26,6 +26,12 @@ module level(folded) {
     rotate([0, 0, 180]) bars(2);
     bars(4);
     rotate([0, 0, 180]) bars(8); 
+    translate([tRadius*cos(30)/2, tRadius*sin(30)/2])
+      rotate([0, 0, 180]) bars(4);
+    translate([-tRadius*cos(30)/2, tRadius*sin(30)/2])
+      rotate([0, 0, 180]) bars(4);
+    translate([0, -tRadius/2])
+      rotate([0, 0, 180]) bars(4);      
     floorWithHole();
     translate([0, -tRadius/2, 0]) 
       rotate([0, 0, 180]) floor();
