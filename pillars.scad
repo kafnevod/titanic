@@ -14,12 +14,54 @@ module pillarBar(h) {
       cube([barH, barW, h], false);    
 }
 
-// Задние опорные брусья 
+// Опорные брусья 
 module pillarBars() {
-  translate([tSide/2 - barH, tRadius/2, pillarHeight+barH]) 
+  // Правая задняя первого этажа
+  translate([tSide/2 - barH/2, tRadius*sin(30) - barH, pillarHeight+barH]) 
+    rotate([0,0,60])
     pillarBar(pillarHeight);
+  // Левая задняя первого этажа
   translate([-tSide/2, tRadius/2, pillarHeight+barH]) 
-    pillarBar(pillarHeight);    
+    rotate([0,0,-60])  
+    pillarBar(pillarHeight);  
+  // Правая средняя перил первого этажа
+  translate([tSide/4 - barH/2, -(tRadius*sin(30)/2 + barH), (pillarHeight+barH)*1]) 
+    rotate([0,0,60])
+    pillarBar(railingH);  
+  // Левая средняя перил первого этажа
+  translate([-(tSide/4), -tRadius/4, (pillarHeight+barH)*1]) 
+    rotate([0,0,-60])  
+    pillarBar(railingH); 
+  // Задняя перил первого этажа
+  translate([0, (tRadius/2), (pillarHeight+barH)*1]) 
+    rotate([0,0,0])  
+    pillarBar(railingH);     
+    
+  // Передняя второго этажа    
+  translate([-barH/2, -tRadius - 0, pillarHeight*2+barH*2]) 
+    rotate([0,0,90])
+    pillarBar(railingH); 
+  // Правая задняя второго этажа
+  translate([tSide/2 - barH/2, tRadius*sin(30) - barH, (pillarHeight+barH)*2]) 
+    rotate([0,0,60])
+    pillarBar(railingH); 
+    
+  // Левая задняя второго этажа
+  translate([-tSide/2, tRadius/2, (pillarHeight+barH)*2]) 
+    rotate([0,0,-60])  
+    pillarBar(railingH); 
+  // Правая средняя перил второго этажа
+  translate([tSide/4 - barH/2, -(tRadius*sin(30)/2 + barH), (pillarHeight+barH)*2]) 
+    rotate([0,0,60])
+    pillarBar(railingH);  
+  // Левая средняя перил второго этажа
+  translate([-(tSide/4), -tRadius/4, (pillarHeight+barH)*2]) 
+    rotate([0,0,-60])  
+    pillarBar(railingH); 
+  // Задняя перил второго этажа
+  translate([-barH/2, (tRadius/2), (pillarHeight+barH)*2]) 
+    rotate([0,0,0])  
+    pillarBar(railingH);    
 }
 
 // Опорные стойки
