@@ -256,12 +256,21 @@ module ladder() {
   // Левые перила
   translate([(tSide/2)-platformL , tRadius*sin(30)+barW/2, railingH])
     rotate([0, -(180-angle), 0])
-    cornerBar((pillarHeight+barH)/sin(angle), bigCornerW);     
+    cornerBar((pillarHeight+barH)/sin(angle), bigCornerW); 
+    
+   translate([(tSide/2)-platformL , tRadius*sin(30)+barW*1.5-1,   railingH])
+    rotate([90, -(180-angle), 0])
+    handRailBar((pillarHeight+barH)/sin(angle), bigCornerW); 
+    
     
   // Правые перила   
   translate([(tSide/2)-platformL , tRadius*sin(30)+ladderW+barW/2,   railingH])
     rotate([90, -(180-angle), 0])
     cornerBar((pillarHeight+barH)/sin(angle), bigCornerW);
+    
+  translate([(tSide/2)-platformL , tRadius*sin(30)+ladderW+barW/2,   railingH])
+    rotate([90, -(180-angle), 0])
+    handRailBar((pillarHeight+barH)/sin(angle), bigCornerW);    
    
 }
 
