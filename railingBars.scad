@@ -49,7 +49,11 @@ module back1RailingBars() {
   // ограждение 2-й площадки
   translate([-tSide/2+backLeftL - barW - barW/2, tRadius*sin(30) + barW - smallCornerW- 1, pillarHeight+ barH + railingH]) 
     rotate([0, 0, 90]) 
-    handRailBar(ladderW - smallCornerW);   
+    handRailBar(ladderW - smallCornerW);  
+    
+  translate([-tSide/2+backLeftL - barW/2, tRadius*sin(30) + barW*2 + ladderW - smallCornerW- 1, pillarHeight+ barH + railingH]) 
+    rotate([0, 0, 0]) 
+    handRailBar(platformL);     
     
   // Заднее ограждение 2-го этажа 
   rail3Len = platformL + pillarHeight + barH;  
