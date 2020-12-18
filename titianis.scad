@@ -43,6 +43,13 @@ translate([0, 0, pillarHeight+barH+railingH])
 translate([0, 0, 2*pillarHeight+barH]) level(false);
 translate([0, 0, 2*pillarHeight+2*barH+railingH])
     railingBars();
+
+// Заднее ограждение 1-го этажа     
+back1RailingBars();    
+
+// Заднее ограждение 2-го этажа     
+back2RailingBars(); 
+
 // Задние опорные брусья 
 pillarBars();
 //Лестница
