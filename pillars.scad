@@ -50,6 +50,7 @@ module pillarBars() {
   translate([-tSide/2, tRadius/2, (pillarHeight+barH)*2]) 
     rotate([0,0,-60])  
     pillarBar(railingH); 
+    
   // Правая средняя перил второго этажа
   translate([tSide/4 - barH/2, -(tRadius*sin(30)/2 + barH), (pillarHeight+barH)*2]) 
     rotate([0,0,60])
@@ -61,7 +62,19 @@ module pillarBars() {
   // Задняя перил второго этажа
   translate([-barH/2, (tRadius/2), (pillarHeight+barH)*2]) 
     rotate([0,0,0])  
-    pillarBar(railingH);    
+    pillarBar(railingH); 
+    
+  // Стойки платформ  
+   // Правая крнечная перил первого этажа
+  translate([tSide/2 + (ladderW/cos(30))*sin(30), (tRadius*sin(30) + (ladderW) - barH), (pillarHeight+barH)*1]) 
+    rotate([0,0,60])
+    pillarBar(railingH); 
+
+  // Левая крнечная второго этажа
+  translate([-tSide/2 - (ladderW/cos(30))*sin(30), tRadius/2 + (ladderW), (pillarHeight+barH)*2]) 
+    rotate([0,0,-60])  
+    pillarBar(railingH);     
+    
 }
 
 // Опорные стойки
@@ -76,4 +89,6 @@ module pillars() {
     // Передняя стойка второго этажа
     translate([pRadius * cos(270), pRadius * sin(270), pillarHeight+barH])
       pillar();
+      
+      
 }
