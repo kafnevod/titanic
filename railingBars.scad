@@ -25,14 +25,35 @@ module railingBars() {
 
 // Заднее ограждение 1-го этажа 
 module back1RailingBars() {
-     translate([tSide/2, tRadius*sin(30), pillarHeight+ barH + railingH]) 
-      rotate([0, 0, 60]) 
-      handRailBar(ladderW/cos(30)); 
-      railDelta = (ladderW/cos(30))*sin(30);
-      translate([tSide/2 - (platformL + railDelta)/2 - barW*2, tRadius*sin(30) + ladderW + barW, pillarHeight+ barH + railingH]) 
-      rotate([0, 0, 0]) 
-      handRailBar(platformL + railDelta + barW*2); 
-      
+  // Ограждение правой площадки
+  translate([tSide/2, tRadius*sin(30), pillarHeight+ barH + railingH]) 
+    rotate([0, 0, 60]) 
+    handRailBar(ladderW/cos(30)); 
+  
+  railDelta = (ladderW/cos(30))*sin(30);
+  translate([tSide/2 - (platformL + railDelta)/2 - barW*2, tRadius*sin(30) + ladderW + barW, pillarHeight+ barH + railingH]) 
+    rotate([0, 0, 0]) 
+    handRailBar(platformL + railDelta + barW*2); 
+
+  // центральные перила
+  translate([tSide/2 - platformL - (pillarHeight + barH), tRadius*sin(30) + barW - 1, pillarHeight+ barH + railingH]) 
+    rotate([0, 0, 0]) 
+    handRailBar(pillarHeight + barH); 
+    
+  // левое ограждение
+  backLeftL = tSide - (platformL * 2 + pillarHeight + barH - barW) + 1;  
+  translate([-tSide/2, tRadius*sin(30) + barW - 1, pillarHeight+ barH + railingH]) 
+    rotate([0, 0, 0]) 
+    handRailBar(backLeftL);  
+    
+  // ограждение 2-й площадки
+  translate([-tSide/2+backLeftL - barW - barW/2, tRadius*sin(30) + barW - smallCornerW- 1, pillarHeight+ barH + railingH]) 
+    rotate([0, 0, 90]) 
+    handRailBar(ladderW - smallCornerW);     
+  translate([-tSide/2+backLeftL, tRadius*sin(30) + ladderW + barW*1.5 - 1, pillarHeight+ barH + railingH]) 
+    rotate([0, 0, 0]) 
+    handRailBar(platformL-1);     
+    
 }
 
 
