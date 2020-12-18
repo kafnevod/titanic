@@ -33,7 +33,8 @@ module pillarBars() {
     rotate([0,0,-60])  
     pillarBar(railingH); 
   // Задняя перил первого этажа
-  translate([0, (tRadius/2), (pillarHeight+barH)*1]) 
+  RDx = (tSide/2) - platformL *2  - (pillarHeight + barH*2)  + 2*smallCornerW  ;    
+  translate([RDx, (tRadius/2), (pillarHeight+barH)*1]) 
     rotate([0,0,0])  
     pillarBar(railingH);     
     
