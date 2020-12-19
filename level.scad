@@ -45,6 +45,7 @@ module level(folded) {
       rightTable(folded);
     translate([0, -tRadius, hTable])     
       leftTable(folded);
+      tableSupport();
 }
 
 // level(false);
