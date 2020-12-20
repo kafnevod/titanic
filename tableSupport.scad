@@ -1,6 +1,6 @@
-tSide = 460;
-tRadius = (tSide /2) / cos(30);
-hTable=70;
+// tSide = 460;
+// tRadius = (tSide /2) / cos(30);
+// hTable=70;
 smallCornerW = 3;
 
 include <cornerBar.scad>;

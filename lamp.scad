@@ -1,4 +1,4 @@
-tSide = 460;
+// tSide = 460;
 
 dLamp = 15;
 hLampBase = 3;

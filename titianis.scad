@@ -32,6 +32,7 @@ include <stair.scad>;
 include <tableSupport.scad>;
 include <crossBarsSupport.scad>;
 include <lamp.scad>;
+include <man.scad>;
 
 // Баня
 //sauna();
@@ -67,5 +68,13 @@ platform3();
 
 support();
 
+translate([0, -tRadius/1.6, (pillarHeight+barH) ])
+  man();
 
+translate([0, -tRadius/2, (pillarHeight+barH)*2 ])
+  man();
+  
+translate([tRadius + ladderW/2, tSide/2, 0])
+  rotate([0, 0, 90])
+  manN();
 

@@ -1,4 +1,4 @@
-railingH = 100;
+// railingH = 100;
 
 crossBarH = 4;
 crossBarW = 3;
