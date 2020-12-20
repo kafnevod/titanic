@@ -29,6 +29,10 @@ include <level.scad>;
 include <cornerBar.scad>;
 include <ladder.scad>;
 include <stair.scad>;
+include <tableSupport.scad>;
+include <crossBarsSupport.scad>;
+include <lamp.scad>;
+
 // Баня
 //sauna();
 // Ёлка

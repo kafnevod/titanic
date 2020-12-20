@@ -46,6 +46,20 @@ module level(folded) {
     translate([0, -tRadius, hTable])     
       leftTable(folded);
       tableSupport();
+    translate([0, -tRadius, barH])
+      rotate([0, 0, 60])
+      crossElements(8);
+    translate([0, -tRadius, barH])
+      rotate([0, 0, 120])
+      crossElements(8);
+    translate([0, -tRadius, railingH + barW + barH])
+      rotate([0, 0, 60])
+      lampLine();
+    translate([0, -tRadius, railingH + barW + barH])
+      rotate([0, 0, 120])
+      lampLine(); 
+    translate([0, tRadius/2, railingH + barW + barH])
+      lamp();   
 }
 
 // level(false);

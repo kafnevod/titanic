@@ -260,7 +260,7 @@ module ladder() {
     
    translate([(tSide/2)-platformL , tRadius*sin(30)+barW*1.5-1,   railingH])
     rotate([90, -(180-angle), 0])
-    handRailBar((pillarHeight+barH)/sin(angle), bigCornerW); 
+    handRailBar((pillarHeight+barH)/sin(angle)/*, bigCornerW*/); 
     
     
   // Правые перила   
@@ -270,7 +270,7 @@ module ladder() {
     
   translate([(tSide/2)-platformL , tRadius*sin(30)+ladderW+barW/2,   railingH])
     rotate([90, -(180-angle), 0])
-    handRailBar((pillarHeight+barH)/sin(angle), bigCornerW);    
+    handRailBar((pillarHeight+barH)/sin(angle)/*, bigCornerW*/);    
    
 }
 
