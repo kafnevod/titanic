@@ -73,8 +73,9 @@ translate([0, -tRadius/1.6, (pillarHeight+barH) ])
 
 translate([0, -tRadius/2, (pillarHeight+barH)*2 ])
   man();
-  
-translate([tRadius + ladderW/2, tSide/2, 0])
+
+stepX = (pillarHeight + barH) / 9;  
+translate([tSide/2 - platformL - stepX, tRadius*sin(30) + ladderW/2,  stepX])
   rotate([0, 0, 90])
   manN();
 
