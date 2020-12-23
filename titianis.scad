@@ -18,6 +18,9 @@ hTable=70;
 
 railingH = 100;
 
+//$vpf = [0, 200, 300];
+$vpr = [90 - $t * 90 , 0, $t * 360];
+$vpd = 2400*$t + 600 ;
 include <sauna.scad>;
 include <fir.scad>;
 include <pillars.scad>;
