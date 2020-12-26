@@ -79,17 +79,27 @@ module pillarBars() {
 }
 
 // Опорные стойки
-module pillars() {
-    pRadius = tRadius - footSize;
+module pillars1(time) {
+  pRadius = tRadius - footSize;
+  if ($t >= time+2/100) {
     translate([pRadius * cos(30), pRadius * sin(30), 0]) 
       pillar();
+  }
+  if ($t >= time+4/100) {
     translate([pRadius * cos(150), pRadius * sin(150), 0])
       pillar();
+  }    
+  if ($t >= time+6/100) {    
     translate([pRadius * cos(270), pRadius * sin(270), 0])
       pillar();
-    // Передняя стойка второго этажа
+  }  
+}
+      
+ module pillars2(time) {
+  pRadius = tRadius - footSize;
+  // Передняя стойка второго этажа
+  if ($t >= time) {
     translate([pRadius * cos(270), pRadius * sin(270), pillarHeight+barH])
       pillar();
-      
-      
+  }
 }

@@ -18,9 +18,11 @@ hTable=70;
 
 railingH = 100;
 
-//$vpf = [0, 200, 300];
-$vpr = [90 - $t * 90 , 0, $t * 360];
-$vpd = 2400*$t + 600 ;
+time = 0;
+
+// $vpf = [0, 200, 300];
+$vpr = [90 - $t * 80 , 0, $t * 1800];
+$vpd = 600*$t + 1800 ;
 include <sauna.scad>;
 include <fir.scad>;
 include <pillars.scad>;
@@ -42,43 +44,42 @@ include <man.scad>;
 // Ёлка
 fir();
 // Опорные стойки
-pillars();
+pillars1(2/100);
 // Первый уровень
-translate([0, 0, pillarHeight]) level(true);
-translate([0, 0, pillarHeight+barH+railingH])
-    railingBars();
-// Второй уровень    
-translate([0, 0, 2*pillarHeight+barH]) level(false);
-translate([0, 0, 2*pillarHeight+2*barH+railingH])
-    railingBars();
+level1(10/100);
+// Второй уровень 
+level2(35/100);
 
-// Заднее ограждение 1-го этажа     
-back1RailingBars();    
+if ($t >= 1) {
 
-// Заднее ограждение 2-го этажа     
-back2RailingBars(); 
 
-// Задние опорные брусья 
-pillarBars();
-//Лестница
-ladder();
-translate([0,0,pillarHeight+barH])
+  // Заднее ограждение 1-го этажа     
+  back1RailingBars();    
+
+  // Заднее ограждение 2-го этажа     
+  back2RailingBars(); 
+
+  // Задние опорные брусья 
+  pillarBars();
+  //Лестница
   ladder();
-  
-platform1();
-platform2();
-platform3();
+  translate([0,0,pillarHeight+barH])
+    ladder();
+    
+  platform1();
+  platform2();
+  platform3();
 
-support();
+  support();
 
-translate([0, -tRadius/1.6, (pillarHeight+barH) ])
-  man();
+  translate([0, -tRadius/1.6, (pillarHeight+barH) ])
+    man();
 
-translate([0, -tRadius/2, (pillarHeight+barH)*2 ])
-  man();
+  translate([0, -tRadius/2, (pillarHeight+barH)*2 ])
+    man();
 
-stepX = (pillarHeight + barH) / 9;  
-translate([tSide/2 - platformL - stepX, tRadius*sin(30) + ladderW/2,  stepX])
-  rotate([0, 0, 90])
-  manN();
-
+  stepX = (pillarHeight + barH) / 9;  
+  translate([tSide/2 - platformL - stepX, tRadius*sin(30) + ladderW/2,  stepX])
+    rotate([0, 0, 90])
+    manN();
+}
