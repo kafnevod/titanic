@@ -1,8 +1,8 @@
 tSide = 460;
 tRadius = (tSide /2) / cos(30);
 
-firHeight = 800;
-firDiam =  10;
+firHeight = 900;
+firDiam =  20;
 
 pillarDiam = 10;
 pillarHeight = 200;
