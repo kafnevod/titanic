@@ -25,15 +25,16 @@
 module level1(time) {
   translate([0, 0, pillarHeight]) 
     level(true, time);
-  translate([0, 0, pillarHeight+barH+railingH])
-      railingBars(time+20/100);
+//   translate([0, 0, pillarHeight+barH+railingH])
+//       railingBars(time+20/100);
 }
 
 module level2(time) {
   pillars2(time);    
-  translate([0, 0, 2*pillarHeight+barH]) level(false, time+1/100);
-  translate([0, 0, 2*pillarHeight+2*barH+railingH])
-    railingBars(time+21/100);
+  translate([0, 0, 2*pillarHeight+barH]) 
+    level(false, time+1/100);
+//   translate([0, 0, 2*pillarHeight+2*barH+railingH])
+//     railingBars(time+21/100);
 }
 
 module level(folded, time) {
@@ -77,39 +78,43 @@ module level(folded, time) {
       rotate([0, 0, 300]) floor();
   }
   if ($t >= time+11/100) {       
-    translate([0, 0, hTable])     
-      table(folded);
-  }
-  if ($t >= time+12/100) {       
-    translate([0, -tRadius, hTable])     
-      rightTable(folded);
-  }
-  if ($t >= time+13/100) {       
     translate([0, -tRadius, hTable])     
       leftTable(folded);
       tableSupport();
+  }  
+  if ($t >= time+12/100) {       
+    translate([0, 0, hTable])     
+      table(folded);
+  }
+  if ($t >= time+13/100) {       
+    translate([0, -tRadius, hTable])     
+      rightTable(folded);
   }
   if ($t >= time+14/100) {       
+    translate([0, 0, barH+railingH])
+        railingBars(time+20/100);
+  }
+  if ($t >= time+15/100) {       
     translate([0, -tRadius, barH])
       rotate([0, 0, 60])
       crossElements(8);
   }
-  if ($t >= time+15/100) {       
+  if ($t >= time+16/100) {       
     translate([0, -tRadius, barH])
       rotate([0, 0, 120])
       crossElements(8);
   }
-  if ($t >= time+16/100) {       
+  if ($t >= time+17/100) {       
     translate([0, -tRadius, railingH + barW + barH])
       rotate([0, 0, 60])
       lampLine();
   }
-  if ($t >= time+17/100) {       
+  if ($t >= time+18/100) {       
     translate([0, -tRadius, railingH + barW + barH])
       rotate([0, 0, 120])
       lampLine(); 
   }
-  if ($t >= time+18/100) {       
+  if ($t >= time+19/100) {       
     translate([0, tRadius/2, railingH + barW + barH])
       lamp();   
   }    

@@ -47,28 +47,35 @@ fir();
 pillars1(2/100);
 // Первый уровень
 level1(10/100);
+// Заднее ограждение 1-го этажа     
+back1RailingBars(30/100);   
+// Задние опорные брусья первого уровня
+pillarBars1(30/100);
+platform1(35/100);
+platform2(37/100);
+
 // Второй уровень 
-level2(35/100);
+level2(40/100);
+// Заднее ограждение 2-го этажа     
+back2RailingBars(60/100); 
+// Задние опорные брусья второго уровня
+pillarBars2(60/100);
+platform3(65/100);
 
 if ($t >= 1) {
 
 
-  // Заднее ограждение 1-го этажа     
-  back1RailingBars();    
+ 
 
-  // Заднее ограждение 2-го этажа     
-  back2RailingBars(); 
 
-  // Задние опорные брусья 
-  pillarBars();
+
+
   //Лестница
   ladder();
   translate([0,0,pillarHeight+barH])
     ladder();
     
-  platform1();
-  platform2();
-  platform3();
+
 
   support();
 
