@@ -14,17 +14,17 @@ module handRailBar(L) {
 }
 
 // Ограда этажа
-module railingBars(/*time*/) {
-//    if ($t >= time) { 
+module railingBars(time) {
+    if ($t >= time) { 
     translate([0, -tRadius, 0]) 
       rotate([0, 0, 60]) 
       railBar(tSide);
-/*   } 
-  if ($t >= time+1/100) {*/   
+   } 
+  if ($t >= time+1/100) {   
     translate([0, -tRadius, 0]) 
       rotate([0, 0, 120]) 
       railBar(tSide);
-//   }   
+   }   
 }
 
 // Заднее ограждение 1-го этажа 

@@ -39,54 +39,48 @@ include <crossBarsSupport.scad>;
 include <lamp.scad>;
 include <man.scad>;
 
-// Баня
-//sauna();
+
 // Ёлка
 fir();
 // Опорные стойки
 pillars1(2/100);
 // Первый уровень
 level1(10/100);
+
+support1(29/100);
+
 // Заднее ограждение 1-го этажа     
 back1RailingBars(30/100);   
 // Задние опорные брусья первого уровня
 pillarBars1(30/100);
 platform1(35/100);
 platform2(37/100);
+//Лестница 1-го этажа
+ladder(40/100);
+
 
 // Второй уровень 
-level2(40/100);
+level2(50/100);
+support2(69/100);
 // Заднее ограждение 2-го этажа     
-back2RailingBars(60/100); 
+back2RailingBars(70/100); 
 // Задние опорные брусья второго уровня
-pillarBars2(60/100);
-platform3(65/100);
+pillarBars2(72/100);
+platform3(75/100);
+//Лестница 2-го этажа
+translate([0,0,pillarHeight+barH])
+  ladder(80/100);
 
-if ($t >= 1) {
+translate([0, -tRadius/1.6, (pillarHeight+barH) ])
+  man(88/100);
 
+translate([0, -tRadius/2, (pillarHeight+barH)*2 ])
+  man(89/100);
 
- 
+stepX = (pillarHeight + barH) / 9;  
+translate([tSide/2 - platformL - stepX, tRadius*sin(30) + ladderW/2,  stepX])
+  rotate([0, 0, 90])
+  manN(89/100);  
 
-
-
-
-  //Лестница
-  ladder();
-  translate([0,0,pillarHeight+barH])
-    ladder();
-    
-
-
-  support();
-
-  translate([0, -tRadius/1.6, (pillarHeight+barH) ])
-    man();
-
-  translate([0, -tRadius/2, (pillarHeight+barH)*2 ])
-    man();
-
-  stepX = (pillarHeight + barH) / 9;  
-  translate([tSide/2 - platformL - stepX, tRadius*sin(30) + ladderW/2,  stepX])
-    rotate([0, 0, 90])
-    manN();
-}
+// Баня
+sauna(99/100);

@@ -190,101 +190,119 @@ module _platform3() {
 }
 
 
-module support() {
-  // Выносной поддерживающий уголок первого этажа
-  translate([tRadius*sin(30)*cos(30) + barW*cos(30)+2, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level1H])
-    rotate([180, 0, 60])
-    cornerBar(tSide/2 + ladderW/cos(30), bigCornerW);  
-//Дальный выносной поддерживающий уголок второго этажа
-/*  translate([-(tRadius)*sin(30)*cos(30)+ barW*cos(30)+1, -tRadius*sin(30)*sin(30)+1, level2H]) */
-  translate([-tRadius*sin(30)*cos(30) - barW*cos(30) - 1, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level2H])
-    rotate([-90, 0, 120])
-    cornerBar(tSide/2 + ladderW/cos(30), 5); 
-    
-  // Дальняя передняя стойка
-  translate([(tSide/2)-platformL, tRadius*sin(30)+ladderW-barW/2, 0])
-    rotate([0, -90, 0])
-    cornerBar(pillarHeight+barH+railingH, 5);  
+module support1(time) {
+  if ($t >= time+0/100) {    
+    // Выносной поддерживающий уголок первого этажа
+    translate([tRadius*sin(30)*cos(30) + barW*cos(30)+2, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level1H])
+      rotate([180, 0, 60])
+      cornerBar(tSide/2 + ladderW/cos(30), bigCornerW);  
 
-  // Ближняя передняя стойка
-  translate([(tSide/2)-platformL, tRadius*sin(30)+barW/2, 0])
-    rotate([0, -90, 0])
-    cornerBar(pillarHeight+barH+railingH, 5); 
+    // Дальняя передняя стойка
+    translate([(tSide/2)-platformL, tRadius*sin(30)+ladderW-barW/2, 0])
+      rotate([0, -90, 0])
+      cornerBar(pillarHeight+barH+railingH, 5);  
 
-  RDx = (tSide/2) - platformL - (pillarHeight + barH)  + 2*smallCornerW;
-  // Дальняя задняя стойка
-  translate([RDx, tRadius*sin(30)+ladderW-barW/2+1, pillarHeight + barH])
-    rotate([0, -90, 0])
-    cornerBar(pillarHeight+barH+railingH, 5); 
-    
-  // Дальняя задняя стойка II
-  translate([RDx - platformL, tRadius*sin(30)+ladderW-barW/2+1, pillarHeight + barH])
-    rotate([0, -90, 0])
-    cornerBar(pillarHeight+barH+railingH, 5);     
+    // Ближняя передняя стойка
+    translate([(tSide/2)-platformL, tRadius*sin(30)+barW/2, 0])
+      rotate([0, -90, 0])
+      cornerBar(pillarHeight+barH+railingH, 5); 
 
-  // Дальняя передняя стойка
-  translate([RDx, tRadius*sin(30)+barW/2, pillarHeight + barH])
-    rotate([0, -90, 0])
-    cornerBar(pillarHeight+barH+railingH, 5);     
-    
+    RDx = (tSide/2) - platformL - (pillarHeight + barH)  + 2*smallCornerW;
+    // Дальняя задняя стойка
+    translate([RDx, tRadius*sin(30)+ladderW-barW/2+1, pillarHeight + barH])
+      rotate([0, -90, 0])
+      cornerBar(pillarHeight+barH+railingH, 5); 
+      
+    // Дальняя задняя стойка II
+    translate([RDx - platformL, tRadius*sin(30)+ladderW-barW/2+1, pillarHeight + barH])
+      rotate([0, -90, 0])
+      cornerBar(pillarHeight+barH+railingH, 5);     
+
+    // Дальняя передняя стойка
+    translate([RDx, tRadius*sin(30)+barW/2, pillarHeight + barH])
+      rotate([0, -90, 0])
+      cornerBar(pillarHeight+barH+railingH, 5);     
+  }
 }
 
-module ladder() {
+module support2(time) {
+  if ($t >= time+0/100) {  
+    //Дальный выносной поддерживающий уголок второго этажа
+  /*  translate([-(tRadius)*sin(30)*cos(30)+ barW*cos(30)+1, -tRadius*sin(30)*sin(30)+1, level2H]) */
+    translate([-tRadius*sin(30)*cos(30) - barW*cos(30) - 1, -tRadius*sin(30)*sin(30)+1 + barW*sin(30), level2H])
+      rotate([-90, 0, 120])
+      cornerBar(tSide/2 + ladderW/cos(30), 5); 
+  } 
+}
+
+module ladder(time) {
 //   angle = atan((pillarHeight*2 + barH)/tSide);
   angle = 45;
 //   echo ("angle=", angle);
   //Спуск с этажа
-  // Левый  
-  translate([(tSide/2)-platformL+barH , tRadius*sin(30)+barW/2, -barH])
-    rotate([0, -(180-angle), 0])
-    cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
-
-  // Левый задний  
-  translate([(tSide/2)-platformL+barH-stairW+bigCornerW-2, tRadius*sin(30)+barW/2, -barH])
-    rotate([0, -(180-angle), 0])
-    cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);
-    
-  // Ступеньки
-  H = pillarHeight + barH;
-  W = H;
-  nStairs = 9;
-  for (n = [1:nStairs-1]) {
-    x = (tSide/2) - platformL - (W/nStairs) * n + 2 + smallCornerW;
-    y = tRadius * sin(30) + bigCornerW/2;
-    z = (H/nStairs) * n -1;
-    translate([x, y , z])
-      stair();
-  }    
-    
-  // Правый   
-  translate([(tSide/2)-platformL+barH , tRadius*sin(30)+ladderW-barW/2, -barH])
-    rotate([90, -(180-angle), 0])
-    cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
+  if ($t >= time+0/100) {    
+    // Левый  
+    translate([(tSide/2)-platformL+barH , tRadius*sin(30)+barW/2, -barH])
+      rotate([0, -(180-angle), 0])
+      cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
+  }
+  if ($t >= time+1/100) {    
+    // Левый задний  
+    translate([(tSide/2)-platformL+barH-stairW+bigCornerW-2, tRadius*sin(30)+barW/2, -barH])
+      rotate([0, -(180-angle), 0])
+      cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);
+  }
+  if ($t >= time+2/100) {      
+    // Правый   
+    translate([(tSide/2)-platformL+barH , tRadius*sin(30)+ladderW-barW/2, -barH])
+      rotate([90, -(180-angle), 0])
+      cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW); 
+  }
+  if ($t >= time+3/100) {         
+    // Правый задний  
+    translate([(tSide/2)-platformL+barH-stairW+bigCornerW-2 , tRadius*sin(30)+ladderW-barW/2, -barH])
+      rotate([90, -(180-angle), 0])
+      cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);  
       
-  // Правый задний  
-  translate([(tSide/2)-platformL+barH-stairW+bigCornerW-2 , tRadius*sin(30)+ladderW-barW/2, -barH])
-    rotate([90, -(180-angle), 0])
-    cornerBar((pillarHeight+barH*2)/sin(angle), bigCornerW);     
-    
-  // Левые перила
-  translate([(tSide/2)-platformL , tRadius*sin(30)+barW/2, railingH])
-    rotate([0, -(180-angle), 0])
-    cornerBar((pillarHeight+barH)/sin(angle), bigCornerW); 
-    
-   translate([(tSide/2)-platformL , tRadius*sin(30)+barW*1.5-1,   railingH])
-    rotate([90, -(180-angle), 0])
-    handRailBar((pillarHeight+barH)/sin(angle)/*, bigCornerW*/); 
-    
-    
-  // Правые перила   
-  translate([(tSide/2)-platformL , tRadius*sin(30)+ladderW+barW/2,   railingH])
-    rotate([90, -(180-angle), 0])
-    cornerBar((pillarHeight+barH)/sin(angle), bigCornerW);
-    
-  translate([(tSide/2)-platformL , tRadius*sin(30)+ladderW+barW/2,   railingH])
-    rotate([90, -(180-angle), 0])
-    handRailBar((pillarHeight+barH)/sin(angle)/*, bigCornerW*/);    
-   
+    // Ступеньки
+  }
+  if ($t >= time+4/100) {  
+    H = pillarHeight + barH;
+    W = H;
+    nStairs = 9;
+    for (n = [1:nStairs-1]) {
+      x = (tSide/2) - platformL - (W/nStairs) * n + 2 + smallCornerW;
+      y = tRadius * sin(30) + bigCornerW/2;
+      z = (H/nStairs) * n -1;
+      if ($t >= time+4/100 + 2/1000 * n) {  
+        translate([x, y , z])
+          stair();
+      }
+    }    
+  }
+  if ($t >= time+6/100) {         
+    // Левые перила
+    translate([(tSide/2)-platformL , tRadius*sin(30)+barW/2, railingH])
+      rotate([0, -(180-angle), 0])
+      cornerBar((pillarHeight+barH)/sin(angle), bigCornerW); 
+  }
+  if ($t >= time+7/100) {        
+    translate([(tSide/2)-platformL , tRadius*sin(30)+barW*1.5-1,   railingH])
+      rotate([90, -(180-angle), 0])
+      handRailBar((pillarHeight+barH)/sin(angle)/*, bigCornerW*/); 
+      
+  }
+  if ($t >= time+8/100) {        
+    // Правые перила   
+    translate([(tSide/2)-platformL , tRadius*sin(30)+ladderW+barW/2,   railingH])
+      rotate([90, -(180-angle), 0])
+      cornerBar((pillarHeight+barH)/sin(angle), bigCornerW);
+  }
+  if ($t >= time+9/100) {        
+    translate([(tSide/2)-platformL , tRadius*sin(30)+ladderW+barW/2,   railingH])
+      rotate([90, -(180-angle), 0])
+      handRailBar((pillarHeight+barH)/sin(angle)/*, bigCornerW*/);   
+  }
 }
 
 
