@@ -1,3 +1,7 @@
 # titanic
-Openscad project of Titanicмотровая площадка Титаник](Images/titatnic.png)
+Openscad project of Titanic
+
+Проект смотровой плащадки Титаник
+
+![cмотровая площадка Титаник](Images/titatnic.png)
 
