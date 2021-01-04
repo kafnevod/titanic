@@ -22,7 +22,7 @@ module floor() {
   tradius =  tRadius - 10; 
   translate([0, 0, barH])
   linear_extrude(floorW)
-    color("LightYellow") polygon(points=[
+    color("BurlyWood") polygon(points=[
       [0, tradius/2],
       [-tSide/4, -tradius/4],    
       [ tSide/4, -tradius/4]
