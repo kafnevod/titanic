@@ -269,7 +269,7 @@ module ladder(time) {
   if ($t >= time+4/100) {  
     H = pillarHeight + barH;
     W = H;
-    nStairs = 9;
+    nStairs = 11;
     for (n = [1:nStairs-1]) {
       x = (tSide/2) - platformL - (W/nStairs) * n + 2 + smallCornerW;
       y = tRadius * sin(30) + bigCornerW/2;

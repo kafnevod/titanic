@@ -1,9 +1,9 @@
 // Стойка с площадкой
-module pillar() {
+module pillar(PillarHeight) {
   color("Silver") 
-    cylinder(r = pillarDiam/2 , h = pillarHeight, center = false);
+    cylinder(r = pillarDiam/2 , h = PillarHeight, center = false);
   color("Silver") 
-    translate([-10, -10, pillarHeight]) 
+    translate([-10, -10, PillarHeight]) 
     square(footSize,false);
 }
 
@@ -57,12 +57,12 @@ module pillarBars1(time) {
 }
 
 module pillarBars2(time) {     
-  if ($t >= time+0/100) {    
-    // Передняя второго этажа    
-    translate([-barH/2, -tRadius - 0, pillarHeight*2+barH*2]) 
-      rotate([0,0,90])
-      pillarBar(railingH);
-  }
+//   if ($t >= time+0/100) {    
+//     // Передняя второго этажа    
+//     translate([-barH/2, -tRadius - 0, pillarHeight*2+barH*2]) 
+//       rotate([0,0,90])
+//       pillarBar(railingH);
+//   }
   if ($t >= time+1/100) {    
     // Правая задняя второго этажа
     translate([tSide/2 - barH/2, tRadius*sin(30) - barH, (pillarHeight+barH)*2]) 
@@ -105,15 +105,15 @@ module pillars1(time) {
   pRadius = tRadius - footSize;
   if ($t >= time+2/100) {
     translate([pRadius * cos(30), pRadius * sin(30), 0]) 
-      pillar();
+      pillar(pillarHeight);
   }
   if ($t >= time+4/100) {
     translate([pRadius * cos(150), pRadius * sin(150), 0])
-      pillar();
+      pillar(pillarHeight);
   }    
   if ($t >= time+6/100) {    
     translate([pRadius * cos(270), pRadius * sin(270), 0])
-      pillar();
+      pillar(pillarHeight);
   }  
 }
       
@@ -122,6 +122,6 @@ module pillars1(time) {
   // Передняя стойка второго этажа
   if ($t >= time) {
     translate([pRadius * cos(270), pRadius * sin(270), pillarHeight+barH])
-      pillar();
+      pillar(pillarHeight + railingH);
   }
 }

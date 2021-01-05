@@ -5,7 +5,7 @@ firHeight = 900;
 firDiam =  20;
 
 pillarDiam = 10;
-pillarHeight = 200;
+pillarHeight = 240;
 footSize = 20;
 
 barW = 5;
@@ -20,6 +20,7 @@ railingH = 100;
 
 time = 0;
 
+$t = 0.9;
 // $vpf = [0, 200, 300];
 $vpr = [90 - $t * 80 , 0, $t * 1800];
 $vpd = 600*$t + 1800 ;
